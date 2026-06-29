@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+  padding: 0px;
+  gap: 0px;
+  margin: 0px;
+  font-family: "MedievalSharp", cursive;
+}
+/* Styling Header */
+header {
+  background-color: #2f4f4f;
+  color: #f5f5dc;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: start;
+  gap: 30px;
+  align-items: center;
+}
+.logo {
+  height: 50px;
+  width: auto;
+}
+/* Styling Footer */
+footer {
+  background-color: #2f4f4f;
+  color: #f5f5dc;
+  padding: 20px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
