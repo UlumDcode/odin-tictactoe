@@ -1,9 +1,11 @@
-const board = document.getElementById("board");
 const gameBoard = ["", "", "", "", "", "", "", "", ""];
 let currentPlayer = "X";
 let gameActive = true;
 const boardElement = document.getElementById("board");
 const statusElement = document.getElementById("status");
+const scoreX = document.getElementById("scoreX");
+const scoreO = document.getElementById("scoreO");
+const scoreDraw = document.getElementById("scoreDraw");
 
 const winningConditions = [
   [0, 1, 2],
@@ -25,25 +27,70 @@ for (let i = 0; i < 9; i++) {
     handleCellClick(i, cell);
   });
 
-  board.appendChild(cell);
+  boardElement.appendChild(cell);
 }
 
 function handleCellClick(idx, cell) {
-  if (gameActive === false) {
-    return;
-  }
-
-  if (gameBoard[idx] !== "") {
-    return;
-  }
+  if (!gameActive || gameBoard[idx] !== "") return;
 
   gameBoard[idx] = currentPlayer;
   cell.innerText = currentPlayer;
 
-  // LINGKUNGAN SELANJUTNYA (Kerjakan bertahap setelah ini):
-  // - Cek Menang: jika cekPemenang() -> gameActive = false
-  // - Cek Seri: jika cekSeri() -> gameActive = false
-  // - Jika belum ada yang menang/seri -> ganti giliran pemain
-
   console.log(gameBoard);
+
+  if (cekPemenang()) {
+    updateStatus("Pemain " + currentPlayer + " menang!");
+    gameActive = false;
+    const scoreId = currentPlayer === "X" ? scoreX : scoreO;
+    scoreId.innerText = parseInt(scoreId.innerText) + 1;
+    return;
+  }
+
+  if (cekSeri()) {
+    updateStatus("Permainan seri!");
+    gameActive = false;
+    scoreDraw.innerText = parseInt(scoreDraw.innerText) + 1;
+    return;
+  }
+
+  gantiGiliran();
+}
+
+function gantiGiliran() {
+  currentPlayer = currentPlayer === "X" ? "O" : "X";
+  updateStatus("Giliran pemain: " + currentPlayer);
+}
+
+function cekPemenang() {
+  for (const condition of winningConditions) {
+    const a = condition[0];
+    const b = condition[1];
+    const c = condition[2];
+
+    if (
+      gameBoard[a] !== "" &&
+      gameBoard[a] === gameBoard[b] &&
+      gameBoard[b] === gameBoard[c]
+    ) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function cekSeri() {
+  return !gameBoard.includes("");
+}
+
+function updateStatus(message) {
+  statusElement.innerText = message;
+}
+
+function resetGame() {
+  gameBoard.fill("");
+  currentPlayer = "X";
+  gameActive = true;
+
+  document.querySelectorAll(".cell").forEach(cell => cell.innerText = "");
+  updateStatus("Giliran pemain: X");
 }

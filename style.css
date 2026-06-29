@@ -96,7 +96,7 @@ main {
 .board {
   background-color: #f5f5dc;
   display: grid;
-  grid-template-columns: repeat(3, 125px);
+  grid-template-columns: repeat(3, 100px);
   gap: 5px;
   border: 1px solid transparent;
   border-radius: 5px;
@@ -106,8 +106,8 @@ main {
 .cell {
   background-color: white;
   color: #2f4f4f;
-  width: 125px;
-  height: 125px;
+  width: 100px;
+  height: 100px;
   gap: 5px;
   font-size: 3rem;
   font-weight: bold;
@@ -116,4 +116,25 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.reset-btn {
+  margin-top: 20px;
+  padding: 10px 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #2f4f4f;
+  background-color: #f5f5dc;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.reset-btn:hover {
+  background-color: #c4c494;
+  transform: scale(1.05);
+}
+
+.reset-btn:active {
+  transform: scale(0.98);
 }
