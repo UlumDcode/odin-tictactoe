@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="img/odin-logo.png" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap");
+    </style>
+    <title>tic tac toe</title>
+  </head>
+  <body>
+    <header>
+      <div>
+        <img class="logo" src="img/odin-logo.png" alt="odin logo" />
+      </div>
+      <div>
+        <h1>Tic Tac Toe</h1>
+        <p>This is a game of tic tac toe</p>
+      </div>
+    </header>
+
+    <main>
+      <div class="score-container">
+        <div class="score-box">
+          <span class="score-title">PLAYER X</span>
+          <span id="scoreX" class="score-number">0</span>
+        </div>
+        <div class="score-box">
+          <span class="score-title">DRAWS</span>
+          <span id="scoreDraw" class="score-number">0</span>
+        </div>
+        <div class="score-box">
+          <span class="score-title">PLAYER O</span>
+          <span id="scoreO" class="score-number">0</span>
+        </div>
+      </div>
+
+      <div id="status" class="status-turn">GILIRAN PEMAIN: X</div>
+
+      <div id="board" class="board"></div>
+      <button id="resetBtn" class="reset-btn" onclick="resetGame()">Mulai Ulang</button>
+    </main>
+
+    <footer>
+      <h4>© 2026 UlumDcode. All rights reserved.</h4>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
